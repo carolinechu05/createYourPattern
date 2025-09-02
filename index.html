@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Let's Play!</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <style>
+      body {
+        margin: 0;
+      }
+      
+      /* CSS for the full-page video background */
+      #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover; /* This makes the video fill the screen without distortion */
+        z-index: -1; /* This is key: it pushes the video behind everything else */
+      }
+      
+      /* You need to wrap your content in a container to manage layers */
+      .content-wrapper {
+        position: relative;
+        z-index: 1; /* Puts this layer on top of the video */
+        padding-top: 10px; /* Add some space at the top so content isn't hidden */
+      }
+
+      /* Your existing styles */
+      h1, p {
+        color: white; /* Make sure text is visible on the video */
+        text-align: center;
+      }
+
+      #controls { 
+      
+        padding: 10px; 
+      }
+      .slider-container { margin: 10px 0; }
+      label { 
+        margin-right: 10px; 
+        width: 100px; 
+        display: inline-block; 
+        color: white; 
+        font-family: 'Courier New', monospace;
+        font-size: 15px; 
+      }
+      button { 
+        margin: 10px 5px; 
+        padding: 5px 10px; 
+        font-family: 'Courier New', monospace; 
+        font-size: 14px; 
+        cursor: pointer; 
+      }
+      button:hover { 
+        background-color: #555; 
+      }
+      input[type="text"] { 
+        margin: 10px 5px; 
+        padding: 5px; 
+        font-family: 'Courier New', monospace; 
+        font-size: 14px; 
+        background-color: #333; 
+        color: white; 
+        border: 1px solid white; 
+        width: 200px; 
+      }
+      input[type="text"]::placeholder { 
+        color: #aaa; 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <h1>How are you Spinning Today?</h1>
+      <p>Create your own Carousell pattern and Feel the weather in your Favorite place</p>
+      <div style="text-align: center;">
+        <a href="https://drive.google.com/file/d/1DZ3EdulOjRhaxKIQCMt8xTqy370pMgJW/view?usp=sharing" style="color: white;">
+          <img src="cat.png" alt="Play Demo" style="width: 40px; height: auto;">
+        </a>
+      </div>
+      
+      <div id="controls">
+        <div class="slider-container">
+          <label>Red:</label>
+          <input type="range" id="redSlider" min="0" max="255" value="255">
+        </div>
+        <div class="slider-container">
+          <label>Green:</label>
+          <input type="range" id="greenSlider" min="0" max="255" value="255">
+        </div>
+        <div class="slider-container">
+          <label>Blue:</label>
+          <input type="range" id="blueSlider" min="0" max="255" value="255">
+        </div>
+        <div class="slider-container">
+          <label>Alpha:</label>
+          <input type="range" id="alphaSlider" min="0" max="255" value="255">
+        </div>
+        <div class="slider-container">
+          <label>Thickness:</label>
+          <input type="range" id="thicknessSlider" min="1" max="10" value="1">
+        </div>
+        <div class="slider-container">
+          <label>Speed:</label>
+          <input type="range" id="speedSlider" min="1" max="20" value="10">
+        </div>
+        <div class="slider-container">
+          <label>Outer:</label>
+          <input type="range" id="rcSlider" min="100" max="400" value="300">
+        </div>
+        <div class="slider-container">
+          <label>Inner:</label>
+          <input type="range" id="rmSlider" min="50" max="300" value="202">
+        </div>
+        <div class="slider-container">
+          <label>Pen:</label>
+          <input type="range" id="rdSlider" min="50" max="200" value="180">
+        </div>
+        <div class="slider-container">
+          <button id="removeButton">Remove</button>
+          <button id="saveButton">Save</button>
+          <input type="text" id="fileName" placeholder="Enter file name">
+        </div>
+        <div class="slider-container">
+          <label>City:</label>
+          <input type="text" id="cityInput" placeholder="Enter city name">
+          <button id="submitCityButton">Submit</button>
+        </div>
+      </div>
+      <main></main>
+      <script src="sketch.js"></script>
+      <script src="spiro.js"></script>
+      <video autoplay loop muted playsinline id="myVideo">
+      <source src="sparkle.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    </div>
+  </body>
+</html>
